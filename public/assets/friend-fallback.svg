@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#ffd9e6"/><stop offset="1" stop-color="#f4d9ff"/>
+  </linearGradient></defs>
+  <rect width="260" height="260" fill="url(#g)"/>
+  <circle cx="130" cy="112" r="52" fill="#fff0f5"/>
+  <circle cx="112" cy="104" r="6" fill="#9c5a72"/>
+  <circle cx="148" cy="104" r="6" fill="#9c5a72"/>
+  <path d="M108 128 q22 26 44 0" stroke="#9c5a72" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M96 96 l14 8 M164 96 l-14 8" stroke="#e488a6" stroke-width="4" stroke-linecap="round"/>
+  <text x="130" y="205" text-anchor="middle" font-family="monospace" font-size="11" fill="#9c5a72" letter-spacing="2">ADD A GOOFY PHOTO</text>
+</svg>
