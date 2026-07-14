@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Tulip } from "@/components/Deco";
+import MusicSection from "@/components/MusicSection";
 import LettersSection from "@/components/LettersSection";
 
 export default function Home() {
@@ -139,7 +140,10 @@ export default function Home() {
         <p className="cue">scroll to search ↓</p>
       </section>
 
-      {/* 02 · SEARCHING → FOUND ----------------------------- */}
+      {/* 02 · MUSIC (evidence: recovered audio) ------------- */}
+      <MusicSection />
+
+      {/* 03 · SEARCHING → FOUND ----------------------------- */}
       <section className="search" aria-label="Searching">
         <div className="starfield" aria-hidden="true" />
         <div className="search__inner">
