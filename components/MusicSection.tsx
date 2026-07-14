@@ -86,7 +86,7 @@ export default function MusicSection() {
       <div className="music__head">
         <p className="music__evi">Evidence №2 · recovered audio</p>
         <h2 className="music__title">
-          DARK <b>BLOOD</b>
+          <span className="glitch" data-text="DARK">DARK</span> <b>BLOOD</b>
         </h2>
         <p className="music__cap">found playing on loop at the scene.</p>
       </div>
