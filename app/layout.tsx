@@ -5,6 +5,7 @@ import {
   Dancing_Script,
   Caveat,
   Space_Grotesk,
+  Special_Elite,
 } from "next/font/google";
 import "./globals.css";
 
@@ -40,6 +41,12 @@ const mono = Space_Grotesk({
   variable: "--font-mono",
   display: "swap",
 });
+const type = Special_Elite({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-type",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Protocol 15 · for Prapti",
@@ -54,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${display.variable} ${hand.variable} ${handAlt.variable} ${mono.variable}`}
+      className={`${serif.variable} ${display.variable} ${hand.variable} ${handAlt.variable} ${mono.variable} ${type.variable}`}
     >
       <body>{children}</body>
     </html>

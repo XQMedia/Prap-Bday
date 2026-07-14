@@ -1,26 +1,35 @@
 export default function Fifteen() {
   return (
     <section className="fifteen" id="fifteen">
-      <p className="eyebrow reveal">chapter fifteen</p>
+      <div className="fifteen__evrow reveal">
+        <span className="evtag">Subject</span>
+        <span className="stamp stamp--sm">Person of Interest</span>
+      </div>
+
       <h1 className="fifteen__num" id="fifteenNum" aria-label="Fifteen">
+        <span className="fifteen__circle" aria-hidden="true" />
         <span>1</span>
         <span>5</span>
+        <span className="fifteen__arrow" style={{ right: "-34%", top: "18%" }} aria-hidden="true">
+          ↖ strange, this one
+        </span>
       </h1>
+
       <div className="fifteen__body">
-        <p className="reveal">Fifteen is a strange, tender age.</p>
+        <p className="reveal">Fifteen is a strange, tender age. The case notes agree.</p>
         <p className="reveal">
-          You are half child, half something new — collecting opinions, losing a
-          few, learning the exact shape of your own mind.
+          Half child, half something new — collecting opinions, losing a few,
+          learning the exact shape of her own mind.
         </p>
         <p className="reveal">
-          This is the year of first drafts. You are allowed to make mistakes, to
-          change, to not have the answer yet.
+          Prime suspect in the disappearance of childhood: <em>growing up.</em>
+          Motive: to become exactly who she is.
         </p>
         <p className="reveal fifteen__accent">
-          A new chapter is quietly beginning. It suits you.
+          A new chapter opens. The investigation continues.
         </p>
       </div>
-      <span className="scroll-cue reveal">scroll ↓</span>
+      <span className="scroll-cue reveal">follow the evidence ↓</span>
     </section>
   );
 }

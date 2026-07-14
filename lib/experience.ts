@@ -163,12 +163,12 @@ export function initExperience(): () => void {
     const pct = $("#installPct")!;
     const status = $("#installStatus")!;
     const steps = [
-      "preparing the confetti…",
-      "warming up the balloons…",
-      "un-boxing fifteen candles…",
-      "syncing birthday wishes…",
-      "polishing the memories…",
-      "almost there…",
+      "dusting for prints…",
+      "cross-referencing witnesses…",
+      "decoding the note…",
+      "pulling the polaroids…",
+      "following the red string…",
+      "almost cracked…",
     ];
     const target = 15;
     const state = { v: 0 };
@@ -183,7 +183,7 @@ export function initExperience(): () => void {
         status.textContent = steps[Math.min(steps.length - 1, Math.floor((v / target) * steps.length))];
       },
       onComplete: () => {
-        status.textContent = "welcome, prapti ♡";
+        status.textContent = "file unsealed. welcome, prapti ♡";
         setTimeout(() => { showScene("ink"); runInk(); }, 900);
       },
     });
@@ -265,6 +265,7 @@ export function initExperience(): () => void {
     window.scrollTo(0, 0);
     initReveals();
     initWisdom();
+    initAudio();
     initProtocol();
     initCelebration();
     initWish();
@@ -318,6 +319,33 @@ export function initExperience(): () => void {
         }
       );
     });
+  }
+
+  /* ==========================================================
+     EVIDENCE: AUDIO — ENHYPEN player (visual only)
+     ========================================================== */
+  function initAudio() {
+    const tracks = $$<HTMLElement>(".track");
+    const setPlaying = (el: HTMLElement | null) => {
+      tracks.forEach((t) => t.classList.toggle("is-playing", t === el));
+    };
+    tracks.forEach((t) => {
+      on(t, "click", () => {
+        const already = t.classList.contains("is-playing");
+        setPlaying(already ? null : t);
+        if (!already) tryMusic();
+      });
+    });
+    // auto-cue the favourite track when the player scrolls into view
+    const fav = tracks.find((t) => /♡/.test(t.textContent || "")) || tracks[0];
+    if (fav) {
+      ScrollTrigger.create({
+        trigger: "#player",
+        start: "top 70%",
+        once: true,
+        onEnter: () => setPlaying(fav),
+      });
+    }
   }
 
   /* ==========================================================
@@ -425,6 +453,7 @@ export function initExperience(): () => void {
         burst();
         tryMusic();
         $("#musicToggle")!.classList.add("is-shown");
+        $("#solvedStamp")?.classList.add("stamp--pop");
       },
     });
   }

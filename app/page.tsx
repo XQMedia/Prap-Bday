@@ -6,6 +6,7 @@ import Install from "@/components/Install";
 import Ink from "@/components/Ink";
 import Fifteen from "@/components/Fifteen";
 import Wisdom from "@/components/Wisdom";
+import EnhypenAudio from "@/components/EnhypenAudio";
 import Protocol from "@/components/Protocol";
 import Celebrate from "@/components/Celebrate";
 import Wish from "@/components/Wish";
@@ -29,15 +30,21 @@ export default function Home() {
         <span className="orb orb--3" />
       </div>
 
+      {/* persistent dossier chrome */}
+      <div className="dossier-frame" aria-hidden="true" />
+      <span className="case-chrome case-chrome--tl" aria-hidden="true">Case №15 · Confidential</span>
+      <span className="case-chrome case-chrome--br" aria-hidden="true">Property of Prapti ♡</span>
+
       {/* intro scenes (fixed, sequential) */}
       <Boot />
       <Install />
       <Ink />
 
-      {/* main scroll document (revealed after the ink scene) */}
+      {/* the case file (revealed after the note) */}
       <main className="doc" id="doc" aria-hidden="true">
         <Fifteen />
         <Wisdom />
+        <EnhypenAudio />
         <Protocol />
         <Celebrate />
         <Wish />

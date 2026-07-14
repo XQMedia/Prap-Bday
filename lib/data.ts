@@ -47,6 +47,32 @@ export const LETTERS: Letter[] = [
   },
 ];
 
+/* EVIDENCE: AUDIO — the case soundtrack (ENHYPEN).
+   Swap in Prapti's real favourites; mark her bias track with `fav: true`. */
+export type Track = { name: string; dur: string; fav?: boolean };
+
+export const PLAYLIST = {
+  title: "The Fifteen Files — OST",
+  by: "recovered audio · ENHYPEN",
+  tracks: [
+    { name: "Polaroid Love", dur: "3:16", fav: true },
+    { name: "Bite Me", dur: "2:58" },
+    { name: "Sweet Venom", dur: "3:05" },
+    { name: "Given-Taken", dur: "3:29" },
+    { name: "Future Perfect (Pass the MIC)", dur: "3:11" },
+    { name: "Fatal Trouble", dur: "3:20" },
+  ] as Track[],
+};
+
+/* the closing note in the ending scene */
+export const ENDING_POEM = [
+  "case №15, closed with love:",
+  "may your year be all soft mornings and loud songs,",
+  "tulips on the sill, poems in the margins,",
+  "thrillers you can't put down —",
+  "and every mystery worth solving.",
+];
+
 export type Wisdom = { topic: string; mark: string; text: string };
 
 export const WISDOM: Wisdom[] = [

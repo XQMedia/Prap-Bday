@@ -3,12 +3,15 @@ export default function Celebrate() {
     <section className="celebrate" id="celebrate">
       <div className="celebrate__sky" id="celebrateSky" aria-hidden="true" />
       <div className="celebrate__inner">
-        <h2 className="celebrate__title reveal">
-          happy&nbsp;birthday,
+        <div className="celebrate__stamp">
+          <span className="stamp stamp--round" id="solvedStamp">Case Solved</span>
+        </div>
+        <h2 className="celebrate__title">
+          the culprit was <em>joy</em>
           <br />
-          <em>prapti</em>
+          all along
         </h2>
-        <p className="celebrate__sub reveal">fifteen looks beautiful on you</p>
+        <p className="celebrate__sub">happy birthday, prapti — fifteen looks beautiful on you</p>
       </div>
       <button className="music-toggle" id="musicToggle" aria-label="Toggle music">
         <span className="music-toggle__icon">♪</span>
