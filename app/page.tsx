@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Tulip } from "@/components/Deco";
+import LettersSection from "@/components/LettersSection";
 
 export default function Home() {
   const [photo, setPhoto] = useState("/assets/prapti.jpg");
@@ -181,7 +182,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 04 · MESSAGE --------------------------------------- */}
+      {/* 04 · LETTERS --------------------------------------- */}
+      <LettersSection />
+
+      {/* 05 · MESSAGE --------------------------------------- */}
       <section className="msg" aria-label="Message">
         <div className="msg__inner">
           <p className="msg__eyebrow reveal">case notes</p>
