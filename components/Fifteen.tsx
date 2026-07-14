@@ -1,6 +1,10 @@
+import Floaty from "./Floaty";
+
 export default function Fifteen() {
   return (
-    <section className="fifteen" id="fifteen">
+    <section className="fifteen pattern-dots" id="fifteen">
+      <Floaty set="a" />
+
       <div className="fifteen__evrow reveal">
         <span className="evtag">Subject</span>
         <span className="stamp stamp--sm">Person of Interest</span>
@@ -10,7 +14,7 @@ export default function Fifteen() {
         <span className="fifteen__circle" aria-hidden="true" />
         <span>1</span>
         <span>5</span>
-        <span className="fifteen__arrow" style={{ right: "-34%", top: "18%" }} aria-hidden="true">
+        <span className="fifteen__arrow" style={{ right: "-36%", top: "16%" }} aria-hidden="true">
           ↖ strange, this one
         </span>
       </h1>
@@ -22,7 +26,7 @@ export default function Fifteen() {
           learning the exact shape of her own mind.
         </p>
         <p className="reveal">
-          Prime suspect in the disappearance of childhood: <em>growing up.</em>
+          Prime suspect in the disappearance of childhood: <em>growing up.</em>{" "}
           Motive: to become exactly who she is.
         </p>
         <p className="reveal fifteen__accent">

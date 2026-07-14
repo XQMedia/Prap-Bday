@@ -1,8 +1,11 @@
 import { PLAYLIST } from "@/lib/data";
+import Floaty from "./Floaty";
 
 export default function EnhypenAudio() {
   return (
-    <section className="audio" id="audio">
+    <section className="audio sec--dark" id="audio">
+      <div className="starfield" aria-hidden="true" />
+      <Floaty set="b" tulips={false} />
       <div className="filehead reveal">
         <p className="filehead__no">Evidence Log · C</p>
         <h2 className="filehead__title">recovered audio</h2>

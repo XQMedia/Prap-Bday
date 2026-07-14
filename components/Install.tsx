@@ -1,6 +1,7 @@
 export default function Install() {
   return (
-    <section className="scene scene--install" id="install" aria-label="Decrypting case file">
+    <section className="scene scene--install sec--dark" id="install" aria-label="Decrypting case file">
+      <div className="starfield" aria-hidden="true" />
       <div className="install__inner">
         <div className="install__badge">
           <span className="stamp stamp--sm stamp--pop">Classified</span>

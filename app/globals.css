@@ -4,29 +4,42 @@
    ============================================================= */
 
 :root{
-  /* pinks */
-  --pink-100:#fff6f8;
-  --pink-200:#ffe9f0;
-  --pink-300:#ffd6e4;
-  --pink-400:#ffbdd4;
-  --pink-500:#f79ec0;
-  --rose:#e2789c;
-  /* noir + paper */
-  --wine:#8a3350;
-  --oxblood:#6d2338;
-  --ink:#3d2230;          /* body text */
-  --noir:#25131d;         /* dramatic headings */
-  --ink-soft:#8a6675;
-  --paper:#fbf1e7;        /* aged dossier cream */
-  --paper-2:#f4e2d2;
-  --manila:#e7cfa6;       /* folder tan */
-  --manila-dk:#d8b988;
-  --thread:#c4213f;       /* evidence red string */
-  --thread-2:#e0475f;
-  --stamp:#a83049;        /* rubber-stamp ink */
-  --gold:#d9a94e;
-  --shadow:rgba(80,30,45,.22);
-  --shadow-lg:rgba(60,20,35,.34);
+  /* pinks — cooler, richer (mauve/magenta lean, not bubblegum) */
+  --pink-100:#fff5f8;
+  --pink-200:#ffe4ee;
+  --pink-300:#ffcbe0;
+  --pink-400:#f9aecd;
+  --pink-500:#ee87b4;
+  --rose:#dd6a99;
+  --rose-deep:#c04a79;
+  --mauve:#9b4f78;
+  --lilac:#c9a6dd;
+  --lilac-deep:#8a5aa8;
+  /* deep / noir — for dramatic dark sections */
+  --plum:#24122a;         /* darkest bg */
+  --plum-2:#3a1c3d;
+  --plum-3:#4d2450;
+  --wine:#7c2a4e;
+  --oxblood:#5a1d38;
+  --cherry:#e11d48;       /* hot pop accent */
+  --gold:#e6b85c;
+  --stem:#8fac57;         /* tulip green */
+  /* ink + paper */
+  --ink:#341f2e;          /* body text (light bg) */
+  --noir:#1c0f1a;         /* dramatic headings */
+  --ink-soft:#8a6678;
+  --cream:#f8f1e9;
+  --cream-2:#fdf7f0;
+  --paper:#fbf4ec;        /* aged dossier cream */
+  --paper-2:#f0e2d3;
+  --manila:#e9d3ab;       /* folder tan */
+  --manila-dk:#d7b785;
+  --thread:#e11d48;       /* evidence red string */
+  --thread-2:#ff5d7d;
+  --stamp:#c01f47;        /* rubber-stamp ink */
+  --shadow:rgba(60,20,45,.22);
+  --shadow-lg:rgba(40,12,35,.4);
+  --glow:rgba(255,120,160,.5);
   --glass:rgba(255,251,247,.62);
   --glass-brd:rgba(255,255,255,.75);
 
@@ -153,6 +166,81 @@ img{display:block;max-width:100%}
   color:var(--paper);background:var(--wine);border:none;border-radius:3px;padding:.9em 1.9em;cursor:pointer;
   box-shadow:0 10px 24px var(--shadow);transition:transform .3s var(--ease),background .3s}
 .btn:hover{transform:translateY(-2px);background:var(--oxblood)}
+
+/* =============================================================
+   ATMOSPHERE UTILITIES (patterns, dark mode, glow, floaties)
+   ============================================================= */
+/* paper patterns for light sections */
+.pattern-dots::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(157,79,120,.18) 1.1px,transparent 1.1px);background-size:26px 26px}
+.pattern-grid::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.4;
+  background-image:linear-gradient(rgba(157,79,120,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(157,79,120,.1) 1px,transparent 1px);
+  background-size:32px 32px}
+.pattern-dots > *,.pattern-grid > *{position:relative;z-index:1}
+
+/* dark dramatic sections */
+.sec--dark{
+  background:
+    radial-gradient(120% 90% at 50% -12%, var(--plum-3), transparent 58%),
+    radial-gradient(90% 70% at 84% 116%, var(--wine), transparent 55%),
+    radial-gradient(70% 60% at 12% 90%, var(--oxblood), transparent 60%),
+    var(--plum);
+  color:var(--cream)}
+.sec--dark .filehead__title,.sec--dark .protocol__title,.sec--dark .celebrate__title,
+.sec--dark .ending__wish,.sec--dark .boot__title{color:var(--cream)}
+.sec--dark .fifteen__accent,.sec--dark .wcard__topic{color:var(--pink-400)}
+.sec--dark .ending__poem{color:#f3e2ea}
+.sec--dark .ending__p,.sec--dark .player__sub,.sec--dark .audio__note{color:#d9b9c9}
+.sec--dark .eyebrow,.sec--dark .filehead__no{color:var(--thread-2)}
+
+/* starfield for dark sections */
+.starfield{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.9;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 22%,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 82% 18%,#ffe9f2,transparent),
+    radial-gradient(1px 1px at 46% 66%,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 68% 44%,#ffd9e6,transparent),
+    radial-gradient(1px 1px at 28% 78%,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 90% 72%,#fff,transparent),
+    radial-gradient(1px 1px at 6% 54%,#ffe9f2,transparent),
+    radial-gradient(1px 1px at 58% 12%,#fff,transparent);
+  animation:twinkleField 5s ease-in-out infinite}
+@keyframes twinkleField{0%,100%{opacity:.5}50%{opacity:.95}}
+
+/* soft glow behind hero elements */
+.glow{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0}
+
+/* kinetic marquee strip */
+.marquee{position:relative;overflow:hidden;width:100%;padding:.4em 0;
+  border-top:1px solid rgba(157,79,120,.25);border-bottom:1px solid rgba(157,79,120,.25);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee__track{display:inline-flex;gap:1.2em;white-space:nowrap;will-change:transform;
+  animation:marquee 26s linear infinite}
+.marquee span{font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,4vw,2.6rem);color:var(--rose)}
+.marquee b{color:var(--thread);font-weight:400}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* floating decoration layer (tulips, sparkles, doodles) */
+.floaty{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.floaty > *{position:absolute;opacity:.9;animation:floatY 9s ease-in-out infinite}
+.floaty .fl-spark{color:var(--rose);text-shadow:0 0 8px var(--glow);font-size:1.2rem}
+.floaty .fl-doodle{color:var(--thread);font-family:var(--hand);font-size:1.3rem;opacity:.7}
+@keyframes floatY{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-16px) rotate(var(--r,0deg))}}
+
+.glow-text{text-shadow:0 0 24px var(--glow),0 2px 30px rgba(255,120,160,.3)}
+
+/* per-element fixes so text stays legible on dark sections */
+.sec--dark .boot__hint{color:var(--pink-300)}
+.sec--dark .boot__case,.sec--dark .protocol__kicker{color:var(--thread-2)}
+.sec--dark .install__title{color:var(--cream)}
+.sec--dark .install__title span{color:var(--thread-2)}
+.sec--dark .install__note{color:#d9b9c9}
+.sec--dark .protocol__status{color:#eccdda}
+.sec--dark .protocol__hint,.sec--dark .wish__hint{color:var(--thread-2)}
+.sec--dark .wish__line{color:var(--pink-300)}
+.sec--dark .letters__hint{color:#d9b9c9}
+.sec--dark .scroll-cue,.sec--dark .fifteen__arrow{color:var(--thread-2)}
 
 /* =============================================================
    SCENES (fullscreen, sequential)
@@ -325,7 +413,9 @@ img{display:block;max-width:100%}
 .audio__note{font-family:var(--hand-alt);font-size:1.3rem;color:var(--wine);max-width:460px;text-align:center}
 
 /* ---------- 06 protocol (PINNED) --------------------------- */
-.protocol{height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,#fff1f6,#ffdfe9)}
+.protocol{height:100vh;display:grid;place-items:center}
+.protocol__title{position:relative}
+.protocol .protocol__title{text-shadow:0 0 40px rgba(255,120,160,.35)}
 .protocol__inner{text-align:center;width:min(700px,92vw);position:relative}
 .protocol__kicker{font-family:var(--type);font-size:.76rem;letter-spacing:.4em;text-transform:uppercase;color:var(--thread)}
 .protocol__title{font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,12vw,8rem);
@@ -377,7 +467,10 @@ img{display:block;max-width:100%}
 .wish__hint{position:absolute;top:8vh;left:0;right:0;text-align:center;font-family:var(--type);
   font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--thread);opacity:.7;animation:bob 2.4s ease-in-out infinite}
 
-.cake{position:relative;width:230px;height:250px;transform-origin:center}
+.cake{position:relative;width:230px;height:250px;transform-origin:center;z-index:2}
+.cake::before{content:"";position:absolute;bottom:180px;left:50%;transform:translateX(-50%);
+  width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,179,71,.35),transparent 65%);
+  filter:blur(8px);pointer-events:none;z-index:-1}
 .cake__plate{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:230px;height:26px;border-radius:50%;
   background:radial-gradient(ellipse at 50% 30%,#fff,#ffe0eb);box-shadow:0 16px 30px var(--shadow)}
 .cake__tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:14px}
@@ -449,7 +542,7 @@ img{display:block;max-width:100%}
 .modal__name{font-family:var(--hand);font-size:2rem;color:var(--wine);margin-bottom:1rem}
 
 /* ---------- 10 ending · CASE CLOSED ------------------------ */
-.ending{min-height:100vh;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 30%,#fff,#ffe9f0)}
+.ending{min-height:100vh;display:grid;place-items:center;text-align:center}
 .ending__stars{position:absolute;inset:0;pointer-events:none}
 .ending__star{position:absolute;color:#fff;text-shadow:0 0 6px var(--pink-400);animation:twinkle 3s ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.1)}}

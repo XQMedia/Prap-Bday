@@ -1,7 +1,8 @@
 export default function Wish() {
   return (
-    <section className="wish" id="wish">
+    <section className="wish sec--dark" id="wish">
       <div className="wish__stage" id="wishStage">
+        <div className="starfield" aria-hidden="true" />
         <p className="wish__hint" id="wishHint">keep scrolling ↓</p>
 
         {/* decorations that drift away as you scroll */}

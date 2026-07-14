@@ -50,17 +50,6 @@ export function initExperience(): () => void {
     const photo = $("#photoDrag")!;
     const folder = $("#folder")!;
     const hint = $("#bootHint")!;
-
-    // the baby.jpg 404 (when no real photo is present) fires before React
-    // hydrates, so the JSX onError misses it — recover the SVG placeholder here.
-    const babyImg = $<HTMLImageElement>("#photoDrag img");
-    if (babyImg) {
-      const toPlaceholder = () => {
-        if (!babyImg.src.endsWith("baby.svg")) babyImg.src = "/assets/baby.svg";
-      };
-      if (babyImg.complete && babyImg.naturalWidth === 0) toPlaceholder();
-      else on(babyImg, "error", toPlaceholder, { once: true } as AddEventListenerOptions);
-    }
     let dragging = false,
       sx = 0,
       sy = 0,
@@ -384,7 +373,7 @@ export function initExperience(): () => void {
      ========================================================== */
   function initCelebration() {
     const sky = $("#celebrateSky")!;
-    const colors = ["#ffc2d6", "#ffd9e6", "#f7a8c4", "#ffe3d0", "#f4d9ff", "#fff"];
+    const colors = ["#ee87b4", "#c9a6dd", "#e11d48", "#e6b85c", "#f9aecd", "#8a5aa8", "#fff"];
     let started = false;
 
     function burst() {

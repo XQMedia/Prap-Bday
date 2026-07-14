@@ -3,7 +3,8 @@ import { Tulip } from "./Deco";
 
 export default function Ending() {
   return (
-    <section className="ending" id="ending">
+    <section className="ending sec--dark" id="ending">
+      <div className="starfield" aria-hidden="true" />
       <div className="ending__stars" id="endingStars" aria-hidden="true" />
       <div className="ending__inner">
         <div className="ending__stamp">

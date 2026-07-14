@@ -1,11 +1,13 @@
 import { LETTERS } from "@/lib/data";
+import Floaty from "./Floaty";
 
 const skins = ["envelope--a", "envelope--b", "envelope--c", "envelope--d"];
 
 export default function Letters() {
   return (
     <>
-      <section className="letters" id="letters">
+      <section className="letters pattern-dots" id="letters">
+        <Floaty set="a" />
         <div className="filehead reveal">
           <p className="filehead__no">Evidence Log · D</p>
           <h2 className="filehead__title">witness statements</h2>

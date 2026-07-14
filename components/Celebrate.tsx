@@ -1,6 +1,6 @@
 export default function Celebrate() {
   return (
-    <section className="celebrate" id="celebrate">
+    <section className="celebrate pattern-dots" id="celebrate">
       <div className="celebrate__sky" id="celebrateSky" aria-hidden="true" />
       <div className="celebrate__inner">
         <div className="celebrate__stamp">
