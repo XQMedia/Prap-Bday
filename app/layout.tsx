@@ -6,6 +6,7 @@ import {
   Caveat,
   Space_Grotesk,
   Special_Elite,
+  Anton,
 } from "next/font/google";
 import "./globals.css";
 
@@ -47,6 +48,12 @@ const type = Special_Elite({
   variable: "--font-type",
   display: "swap",
 });
+const poster = Anton({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-poster",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Protocol 15 · for Prapti",
@@ -61,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${display.variable} ${hand.variable} ${handAlt.variable} ${mono.variable} ${type.variable}`}
+      className={`${serif.variable} ${display.variable} ${hand.variable} ${handAlt.variable} ${mono.variable} ${type.variable} ${poster.variable}`}
     >
       <body>{children}</body>
     </html>
