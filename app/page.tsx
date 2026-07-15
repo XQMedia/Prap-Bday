@@ -107,7 +107,6 @@ export default function Home() {
                 if (el && el.complete && el.naturalWidth === 0) toPlaceholder();
               }}
             />
-            <figcaption>last seen: everywhere, glowing</figcaption>
           </figure>
 
           <div className="poster__rows">
@@ -118,14 +117,14 @@ export default function Home() {
               <span className="k">AGE —</span> newly fifteen (15)
             </div>
             <div>
-              <span className="k">LAST SEEN —</span> in Jake&rsquo;s hoodie, ENHYPEN on repeat
+              <span className="k">LAST SEEN —</span> in her room watching jake edits
             </div>
             <div>
-              <span className="k">IDENTIFYING MARKS —</span> writes poetry, reads thrillers, loves tulips
+              <span className="k">IDENTIFYING MARKS —</span> waist missing, ethereal face card, stares at hot men and women, JAKE, COFFEE
             </div>
           </div>
           <p className="poster__reward">
-            REWARD IF FOUND: <b>one (1) very happy birthday</b>
+            REWARD IF FOUND: <b>we don&rsquo;t put a price on women #FEMINISM</b>
           </p>
 
           <div className="tabs" aria-hidden="true">
@@ -195,12 +194,15 @@ export default function Home() {
           <p className="msg__eyebrow reveal">case notes</p>
           <p className="reveal">
             fifteen looks unfairly good on you. here&rsquo;s to a year of{" "}
-            <em>loud songs and quiet mornings</em> — tulips on the windowsill,
-            poems in the margins, thrillers you can&rsquo;t put down.
+            <em>mental breakdowns and uh mental breakdowns</em> — but amidst all
+            of that we can still find time to have more mental breakdowns. and
+            yeah, keep laughing at your problems because crying won&rsquo;t make
+            them go away, so might as well laugh about it haha.{" "}
+            <em>I LOVE YOU SO MUCH</em> and i am glad our introvert asses decided
+            to be friends.
           </p>
-          <p className="reveal">
-            keep being the plot twist nobody sees coming. keep being so easy to
-            love it should be a crime.
+          <p className="reveal msg__aside">
+            (this is my letter btw — i forgot to write one so i&rsquo;m half-drunk improv-ing)
           </p>
           <Tulip className="reveal" style={{ marginTop: "1rem", transform: "rotate(-6deg)" }} />
         </div>

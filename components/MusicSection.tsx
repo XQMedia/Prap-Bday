@@ -84,7 +84,7 @@ export default function MusicSection() {
       </div>
 
       <div className="music__head">
-        <p className="music__evi">Evidence №2 · recovered audio</p>
+        <p className="music__evi">Evidence №1 · recovered audio</p>
         <h2 className="music__title">
           <span className="glitch" data-text="DARK">DARK</span> <b>BLOOD</b>
         </h2>
