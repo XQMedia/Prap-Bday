@@ -66,8 +66,29 @@ export default function MusicSection() {
     a.currentTime = ((e.clientX - r.left) / r.width) * dur;
   };
 
+  // subtle physics: the crime tape drifts with the mouse
+  const onMove = (e: React.MouseEvent<HTMLElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    e.currentTarget.style.setProperty("--tape-x", String((x * 18).toFixed(2)));
+    e.currentTarget.style.setProperty("--tape-y", String((y * 12).toFixed(2)));
+  };
+  const onLeave = (e: React.MouseEvent<HTMLElement>) => {
+    e.currentTarget.style.setProperty("--tape-x", "0");
+    e.currentTarget.style.setProperty("--tape-y", "0");
+  };
+
+  const TAPE = "CRIME SCENE · DO NOT CROSS · ".repeat(16);
+
   return (
-    <section className="music" id="music" aria-label="Evidence: recovered audio">
+    <section
+      className="music"
+      id="music"
+      aria-label="Evidence: recovered audio"
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
       <div className="music__jakes" aria-hidden="true">
         {/* eslint-disable @next/next/no-img-element */}
         <img src="/assets/jake1.jpeg" alt="" />
@@ -143,14 +164,10 @@ export default function MusicSection() {
 
       {/* crossed crime-scene tape across the lower part of the section */}
       <div className="crimetape crimetape--1" aria-hidden="true">
-        <span>
-          crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;
-        </span>
+        <span>{TAPE}</span>
       </div>
       <div className="crimetape crimetape--2" aria-hidden="true">
-        <span>
-          do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;
-        </span>
+        <span>{TAPE}</span>
       </div>
 
       <p className="music__cue">the trail continues ↓</p>

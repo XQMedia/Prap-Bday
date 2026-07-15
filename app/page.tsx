@@ -13,6 +13,7 @@ export default function Home() {
   const skyRef = useRef<HTMLDivElement>(null);
   const foundRef = useRef<HTMLSpanElement>(null);
   const burst = useRef(false);
+  const [cakeMsg, setCakeMsg] = useState(false);
 
   useEffect(() => {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -202,14 +203,16 @@ export default function Home() {
             Prapti
           </p>
 
-          <div className="cake reveal" style={{ transitionDelay: "0.38s" }}>
-            <span className="cake__glow" />
-            <span className="cake__flame" />
-            <span className="cake__candle" />
-            <span className="cake__tier cake__top" />
-            <span className="cake__tier cake__mid" />
-            <span className="cake__tier cake__base" />
-            <span className="cake__plate" />
+          <div className="cake-wrap reveal" style={{ transitionDelay: "0.38s" }}>
+            <button className="cake" onClick={() => setCakeMsg(true)} aria-label="the cake">
+              <span className="cake__glow" />
+              <span className="cake__flame" />
+              <span className="cake__candle" />
+              <span className="cake__tier cake__top" />
+              <span className="cake__tier cake__mid" />
+              <span className="cake__tier cake__base" />
+              <span className="cake__plate" />
+            </button>
           </div>
         </div>
       </section>
@@ -250,6 +253,23 @@ export default function Home() {
           </h2>
         </div>
       </section>
+
+      {/* cake easter-egg popup */}
+      {cakeMsg && (
+        <div className="cakepop" onClick={() => setCakeMsg(false)}>
+          <div className="cakepop__card" onClick={(e) => e.stopPropagation()}>
+            <p className="cakepop__emoji">🎂</p>
+            <p className="cakepop__big">nothing to see here.</p>
+            <p className="cakepop__sub">
+              this was suppose to be something cool but issok
+            </p>
+            <p className="cakepop__nxt">nxt yt · nxt yt</p>
+            <button className="cakepop__close" onClick={() => setCakeMsg(false)}>
+              close
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

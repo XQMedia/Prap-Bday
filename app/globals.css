@@ -161,7 +161,26 @@ img{display:block;max-width:100%}
 .bday__note{font-family:var(--hand-alt);font-size:clamp(1.2rem,3.2vw,1.7rem);color:var(--wine);max-width:520px}
 
 /* cake */
-.cake{position:relative;width:200px;height:220px;margin:1.4rem auto 0;z-index:3}
+.cake-wrap{margin:1.4rem auto 0}
+.cake{position:relative;width:200px;height:220px;z-index:3;display:block;
+  border:none;background:none;padding:0;cursor:pointer;transition:transform .4s var(--ease)}
+.cake:hover{transform:scale(1.07)}
+.cake:active{transform:scale(1.02)}
+/* cake easter-egg popup */
+.cakepop{position:fixed;inset:0;z-index:250;display:grid;place-items:center;padding:6vw;
+  background:rgba(28,12,26,.55);backdrop-filter:blur(6px);animation:cakefade .3s ease}
+@keyframes cakefade{from{opacity:0}to{opacity:1}}
+.cakepop__card{position:relative;background:var(--cream-2);border-radius:16px;padding:clamp(2rem,6vw,3rem);
+  text-align:center;max-width:min(440px,92vw);box-shadow:0 40px 90px rgba(20,8,20,.5);
+  border:1px solid rgba(200,66,111,.2);animation:cakepopin .45s var(--ease)}
+@keyframes cakepopin{0%{opacity:0;transform:scale(.85) translateY(12px)}100%{opacity:1;transform:none}}
+.cakepop__emoji{font-size:2.6rem;margin-bottom:.3rem}
+.cakepop__big{font-family:var(--display);font-style:italic;font-size:clamp(1.6rem,5vw,2.4rem);color:var(--wine);line-height:1.1}
+.cakepop__sub{font-family:var(--hand-alt);font-size:clamp(1.15rem,3.2vw,1.5rem);color:var(--ink);margin-top:.7em;line-height:1.4}
+.cakepop__nxt{font-family:var(--type);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rose-deep);margin-top:1.1em}
+.cakepop__close{margin-top:1.8em;font-family:var(--type);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;background:var(--wine);border:none;border-radius:100px;padding:.8em 2em;cursor:pointer;transition:background .25s}
+.cakepop__close:hover{background:var(--cherry)}
 .cake__glow{position:absolute;bottom:150px;left:50%;transform:translateX(-50%);width:180px;height:180px;border-radius:50%;
   background:radial-gradient(circle,rgba(255,179,71,.4),transparent 65%);filter:blur(6px);z-index:-1}
 .cake__plate{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:22px;border-radius:50%;
@@ -320,16 +339,17 @@ img{display:block;max-width:100%}
   padding:.4em 3em;width:130%;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,.5)}
 .music__tape span{background:#ff2d4f;padding:.1em .5em;color:#120106}
 /* crossed yellow crime-scene tape, lower part of the section */
-.crimetape{position:absolute;left:-16%;right:-16%;z-index:4;padding:.55em 0;overflow:hidden;pointer-events:none;
-  background:#f2d600;color:#0c0c0c;font-family:var(--poster);font-size:clamp(.82rem,1.9vw,1.15rem);
-  letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;
+.crimetape{position:absolute;left:-18%;right:-18%;z-index:4;padding:.34em 0;overflow:hidden;pointer-events:none;
+  background:#f2d600;color:#0c0c0c;font-family:var(--poster);font-size:clamp(.78rem,1.75vw,1.05rem);
+  letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
   box-shadow:0 10px 30px rgba(0,0,0,.6);
-  border-top:3px solid rgba(0,0,0,.4);border-bottom:3px solid rgba(0,0,0,.4);
-  background-image:linear-gradient(180deg,rgba(255,255,255,.35),transparent 40%,rgba(0,0,0,.12))}
-.crimetape span{display:block;text-align:center}
-.crimetape--1{bottom:9%;transform:rotate(-7deg)}
-.crimetape--2{bottom:9%;transform:rotate(7deg)}
-@media (max-width:640px){.crimetape{font-size:.7rem}.crimetape--1,.crimetape--2{bottom:8%}}
+  border-top:2px solid rgba(0,0,0,.38);border-bottom:2px solid rgba(0,0,0,.38);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.35),transparent 40%,rgba(0,0,0,.12));
+  transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.crimetape span{display:block;text-align:center;text-overflow:clip}
+.crimetape--1{bottom:9%;transform:rotate(-7deg) translate(calc(var(--tape-x,0)*1px),calc(var(--tape-y,0)*1px))}
+.crimetape--2{bottom:9%;transform:rotate(7deg) translate(calc(var(--tape-x,0)*-1px),calc(var(--tape-y,0)*1px))}
+@media (max-width:640px){.crimetape{font-size:.68rem}.crimetape--1,.crimetape--2{bottom:8%}}
 
 .music__head{position:relative;z-index:3;text-align:center;margin-bottom:1.6rem}
 .music__evi{font-family:var(--type);letter-spacing:.3em;text-transform:uppercase;color:#ff3b5c;font-size:.72rem}
