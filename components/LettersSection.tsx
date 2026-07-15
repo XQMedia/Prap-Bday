@@ -173,8 +173,7 @@ export default function LettersSection() {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={L.photo} alt="Aalok" />
                     </div>
-                    <p className="lreveal__name">jk 😜 it was Aalok</p>
-                    <p className="lreveal__bf">the boyfriend 💗</p>
+                    <p className="lreveal__name">jk it was Aalok</p>
                   </>
                 ) : (
                   <>

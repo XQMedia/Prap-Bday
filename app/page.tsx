@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Tulip } from "@/components/Deco";
+import IntroSection from "@/components/IntroSection";
 import MusicSection from "@/components/MusicSection";
 import CameraSection from "@/components/CameraSection";
 import LettersSection from "@/components/LettersSection";
@@ -106,6 +107,7 @@ export default function Home() {
 
   return (
     <>
+      <IntroSection />
       <div className="grain" aria-hidden="true" />
 
       {/* 01 · THE POSTER ------------------------------------ */}

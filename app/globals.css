@@ -548,6 +548,70 @@ img{display:block;max-width:100%}
 .cam__cue{position:relative;z-index:3;font-family:var(--type);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;
   color:#b98aa8;animation:bob 2.2s ease-in-out infinite}
 
+/* =============================================================
+   INTRO — the case file drops on the desk
+   ============================================================= */
+.intro{position:fixed;inset:0;z-index:300;display:grid;place-items:center;overflow:hidden;padding:8vw;
+  background:radial-gradient(60% 55% at 50% 38%,#2a1420,transparent 65%),
+             radial-gradient(40% 40% at 50% 40%,rgba(255,150,120,.12),transparent 60%),
+             linear-gradient(180deg,#0e0810,#160b14 55%,#080509);
+  opacity:1;transition:opacity .9s var(--ease)}
+.intro.closing{opacity:0;pointer-events:none}
+.intro__grain{position:absolute;inset:0;pointer-events:none;opacity:.08;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.intro__desk{position:absolute;left:0;right:0;bottom:0;height:34%;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(60,36,18,.5));
+  box-shadow:inset 0 40px 60px rgba(0,0,0,.5)}
+.intro__stage{position:relative;width:min(560px,92vw);height:min(70vh,560px)}
+.intro__scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:1.1rem;animation:sceneIn .7s var(--ease) both}
+@keyframes sceneIn{from{opacity:0}to{opacity:1}}
+
+/* the dropping folder */
+.intro__folder{position:relative;width:min(340px,80vw);padding:2.2rem 1.8rem 2.6rem;border-radius:4px 10px 4px 4px;
+  background:linear-gradient(180deg,#e9d3a6,#d7b785);color:#4a2f18;
+  box-shadow:0 40px 60px rgba(0,0,0,.6),inset 0 2px 3px rgba(255,255,255,.4);
+  animation:filedrop 1.5s cubic-bezier(.3,1.2,.5,1) both}
+.intro__folder::before{content:"";position:absolute;top:-16px;left:8%;width:42%;height:18px;border-radius:8px 12px 0 0;
+  background:linear-gradient(180deg,#e9d3a6,#dcc190)}
+.intro__folder.landed{animation:none}
+@keyframes filedrop{
+  0%{transform:translateY(-130vh) rotate(-10deg);opacity:0}
+  12%{opacity:1}
+  55%{transform:translateY(0) rotate(-2deg)}
+  70%{transform:translateY(-26px) rotate(1deg)}
+  84%{transform:translateY(0) rotate(-1deg)}
+  92%{transform:translateY(-8px)}
+  100%{transform:translateY(0) rotate(-1.5deg)}
+}
+.intro__stampline{position:absolute;top:14px;right:-8px;font-family:var(--poster);font-size:.9rem;letter-spacing:.08em;
+  color:#b0182f;border:3px solid #b0182f;padding:.05em .4em;transform:rotate(8deg);opacity:.82;mix-blend-mode:multiply}
+.intro__case{font-family:var(--type);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:#7a5426;margin-bottom:1.4em}
+.intro__row{font-family:var(--type);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#9a7038;margin-top:1em}
+.intro__val{font-family:var(--poster);font-size:1.7rem;letter-spacing:.03em;color:#3a2410;line-height:1.05}
+.intro__val--red{color:#b0182f}
+.intro__drop{margin-top:1.6rem;font-family:var(--type);font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:#b98a52;
+  opacity:0;animation:fadein 1s ease 1.4s forwards}
+@keyframes fadein{to{opacity:.85}}
+
+/* text scenes */
+.intro__line{font-family:var(--display);font-style:italic;font-weight:400;color:#f2e2ea;
+  font-size:clamp(1.5rem,4.4vw,2.4rem);line-height:1.35;opacity:0;animation:lineIn .9s var(--ease) forwards}
+.intro__line--sm{font-family:var(--type);font-style:normal;text-transform:uppercase;letter-spacing:.24em;
+  font-size:clamp(.72rem,2.4vw,.9rem);color:#c58aa6}
+.intro__line:nth-child(2){animation-delay:.55s}
+.intro__line:nth-child(3){animation-delay:1.1s}
+@keyframes lineIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.intro__btn{margin-top:2.2rem;font-family:var(--type);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+  color:#f2e2ea;background:linear-gradient(180deg,#b0182f,#7c0f22);border:1px solid rgba(255,120,140,.4);border-radius:4px;
+  padding:1em 2.2em;cursor:pointer;opacity:0;box-shadow:0 14px 30px rgba(160,20,40,.4);
+  transition:transform .3s var(--ease),background .3s;animation:fadein2 1s ease 1.8s forwards}
+@keyframes fadein2{to{opacity:1}}
+.intro__btn:hover{transform:translateY(-2px);background:linear-gradient(180deg,#c81f38,#8c1226)}
+.intro__skip{position:absolute;bottom:5vh;left:0;right:0;text-align:center;font-family:var(--type);font-size:.6rem;
+  letter-spacing:.24em;text-transform:uppercase;color:#7a5a6a;cursor:pointer;background:none;border:none;transition:color .2s}
+.intro__skip:hover{color:#c58aa6}
+
 /* tulip */
 .tulip{display:block}
 
