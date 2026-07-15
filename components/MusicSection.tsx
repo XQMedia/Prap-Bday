@@ -66,6 +66,23 @@ export default function MusicSection() {
     a.currentTime = ((e.clientX - r.left) / r.width) * dur;
   };
 
+  // when the intro is dismissed, auto-play "Bite Me" from the 0:10 mark
+  useEffect(() => {
+    const onIntroOpen = () => {
+      const a = audioRef.current;
+      if (!a) return;
+      setIdx(0);
+      const startAt10 = () => {
+        try { a.currentTime = 10; } catch {}
+        a.play().catch(() => {});
+      };
+      if (a.readyState >= 1) startAt10();
+      else a.addEventListener("loadedmetadata", startAt10, { once: true });
+    };
+    window.addEventListener("intro-open", onIntroOpen);
+    return () => window.removeEventListener("intro-open", onIntroOpen);
+  }, []);
+
   // subtle physics: the crime tape drifts with the mouse
   const onMove = (e: React.MouseEvent<HTMLElement>) => {
     const r = e.currentTarget.getBoundingClientRect();

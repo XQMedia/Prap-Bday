@@ -249,7 +249,7 @@ export default function Home() {
             <p>enjoy life</p>
           </div>
           <h2 className="end__wish reveal" style={{ transitionDelay: "0.25s" }}>
-            Happy Birthday, Prapti <span className="hb">♡</span>
+            Happy Birthday <span className="hb">♡</span>
           </h2>
         </div>
       </section>
