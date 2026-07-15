@@ -182,6 +182,8 @@ img{display:block;max-width:100%}
 .cake.out .cake__glow{opacity:0;transition:opacity 1.2s}
 .cake.out .cake__smoke{animation:smoke 2.4s ease-out forwards}
 @keyframes smoke{0%{opacity:.7;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-72px) scale(3.4)}}
+/* after the candle is out, the whole cake fades away */
+.cake.gone{opacity:0;transform:translateY(16px) scale(.92);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease)}
 /* auto make-a-wish countdown */
 .bday__wish{min-height:1.4em;margin-top:.4rem;font-family:var(--display);font-weight:400;color:var(--cherry);
   font-size:clamp(2rem,7vw,3.6rem);line-height:1;opacity:0;text-shadow:0 6px 30px rgba(224,104,143,.35)}
@@ -552,9 +554,7 @@ img{display:block;max-width:100%}
    INTRO — the case file drops on the desk
    ============================================================= */
 .intro{position:fixed;inset:0;z-index:300;display:grid;place-items:center;overflow:hidden;padding:8vw;
-  background:radial-gradient(60% 55% at 50% 38%,#2a1420,transparent 65%),
-             radial-gradient(40% 40% at 50% 40%,rgba(255,150,120,.12),transparent 60%),
-             linear-gradient(180deg,#0e0810,#160b14 55%,#080509);
+  background:radial-gradient(80% 70% at 50% 42%,#2b1838,#1b0f26 66%,#150b1e);
   opacity:1;transition:opacity .9s var(--ease)}
 .intro.closing{opacity:0;pointer-events:none}
 .intro__grain{position:absolute;inset:0;pointer-events:none;opacity:.08;mix-blend-mode:overlay;

@@ -16,6 +16,7 @@ export default function Home() {
   const wishStarted = useRef(false);
   const [wish, setWish] = useState("");
   const [candleOut, setCandleOut] = useState(false);
+  const [cakeGone, setCakeGone] = useState(false);
 
   useEffect(() => {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -90,6 +91,8 @@ export default function Home() {
         setWish("");
         setCandleOut(true);
       }, t);
+      // after the candle is blown out, the cake gently fades away
+      setTimeout(() => setCakeGone(true), t + 1700);
     };
 
     const bdayIO = new IntersectionObserver(
@@ -204,7 +207,7 @@ export default function Home() {
           <p className="bday__en reveal">happy birthday</p>
           <p className="bday__name reveal">Prapti</p>
 
-          <div className={`cake reveal ${candleOut ? "out" : ""}`}>
+          <div className={`cake reveal ${candleOut ? "out" : ""} ${cakeGone ? "gone" : ""}`}>
             <span className="cake__glow" />
             <span className="cake__smoke" />
             <span className="cake__flame" />

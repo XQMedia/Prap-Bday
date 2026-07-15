@@ -30,7 +30,6 @@ export default function IntroSection() {
   return (
     <div className={`intro ${closing ? "closing" : ""}`} aria-label="Intro">
       <div className="intro__grain" aria-hidden="true" />
-      <div className="intro__desk" aria-hidden="true" />
 
       <div className="intro__stage">
         {/* scene 0 — the case file drops onto the desk */}
@@ -44,7 +43,6 @@ export default function IntroSection() {
               <p className="intro__row">Status</p>
               <p className="intro__val intro__val--red">MISSING</p>
             </div>
-            <p className="intro__drop">the file drops onto the desk…</p>
           </div>
         )}
 
