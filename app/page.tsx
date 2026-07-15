@@ -221,8 +221,8 @@ export default function Home() {
         <div className="starfield" aria-hidden="true" />
         <div className="end__inner">
           <div className="end__poem reveal">
-            <p>may your year be all soft mornings and loud songs,</p>
-            <p>and every mystery worth solving.</p>
+            <p>congrats on being 15 twin.</p>
+            <p>enjoy life</p>
           </div>
           <h2 className="end__wish reveal">
             Happy Birthday, Prapti <span className="hb">♡</span>
