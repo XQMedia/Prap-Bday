@@ -13,10 +13,6 @@ export default function Home() {
   const skyRef = useRef<HTMLDivElement>(null);
   const foundRef = useRef<HTMLSpanElement>(null);
   const burst = useRef(false);
-  const wishStarted = useRef(false);
-  const [wish, setWish] = useState("");
-  const [candleOut, setCandleOut] = useState(false);
-  const [cakeGone, setCakeGone] = useState(false);
 
   useEffect(() => {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -72,31 +68,9 @@ export default function Home() {
         });
       }
     };
-    // auto "make a wish · 3 · 2 · 1" then blow the candle out (no scrolling)
-    const runWish = () => {
-      if (wishStarted.current) return;
-      wishStarted.current = true;
-      const seq: [string, number][] = [
-        ["make a wish", 1800],
-        ["3", 1000],
-        ["2", 1000],
-        ["1", 1000],
-      ];
-      let t = 800;
-      seq.forEach(([txt, dur]) => {
-        setTimeout(() => setWish(txt), t);
-        t += dur;
-      });
-      setTimeout(() => {
-        setWish("");
-        setCandleOut(true);
-      }, t);
-      // after the candle is blown out, the cake gently fades away
-      setTimeout(() => setCakeGone(true), t + 1700);
-    };
 
     const bdayIO = new IntersectionObserver(
-      (es) => es.forEach((e) => e.isIntersecting && (spawn(), runWish())),
+      (es) => es.forEach((e) => e.isIntersecting && spawn()),
       { threshold: 0.3 }
     );
     if (sky?.parentElement) bdayIO.observe(sky.parentElement);
@@ -207,9 +181,8 @@ export default function Home() {
           <p className="bday__en reveal">happy birthday</p>
           <p className="bday__name reveal">Prapti</p>
 
-          <div className={`cake reveal ${candleOut ? "out" : ""} ${cakeGone ? "gone" : ""}`}>
+          <div className="cake reveal">
             <span className="cake__glow" />
-            <span className="cake__smoke" />
             <span className="cake__flame" />
             <span className="cake__candle" />
             <span className="cake__tier cake__top" />
@@ -217,10 +190,6 @@ export default function Home() {
             <span className="cake__tier cake__base" />
             <span className="cake__plate" />
           </div>
-
-          <p key={wish} className={`bday__wish ${wish ? "show" : ""}`} aria-live="polite">
-            {wish}
-          </p>
         </div>
       </section>
 
