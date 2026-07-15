@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Tulip } from "@/components/Deco";
 import IntroSection from "@/components/IntroSection";
+import PosterDetails from "@/components/PosterDetails";
 import MusicSection from "@/components/MusicSection";
 import CameraSection from "@/components/CameraSection";
 import LettersSection from "@/components/LettersSection";
@@ -80,6 +81,22 @@ export default function Home() {
           easing: "ease-in-out",
         });
       }
+      // balloons floating up
+      for (let i = 0; i < 9; i++) {
+        const el = document.createElement("i");
+        el.className = "balloon";
+        el.style.cssText = `left:${4 + i * 11 + Math.random() * 4}%;background:radial-gradient(circle at 34% 28%,#fff,${
+          colors[i % colors.length]
+        })`;
+        sky.appendChild(el);
+        el.animate(
+          [
+            { transform: "translateY(120vh) rotate(-4deg)" },
+            { transform: "translateY(-130vh) rotate(4deg)" },
+          ],
+          { duration: 11000 + Math.random() * 7000, delay: Math.random() * 6000, iterations: Infinity, easing: "linear" }
+        );
+      }
     };
 
     const bdayIO = new IntersectionObserver(
@@ -109,7 +126,7 @@ export default function Home() {
         <article className="poster">
           <span className="poster__tape poster__tape--l" />
           <span className="poster__tape poster__tape--r" />
-          <p className="poster__kick reveal">⚠ have you seen this girl ⚠</p>
+          <p className="poster__kick reveal">⚠ have you seen her ⚠</p>
           <h1 className="poster__title reveal" style={{ transitionDelay: "0.08s" }}>
             MISS<span>ING</span>
           </h1>
@@ -132,21 +149,8 @@ export default function Home() {
             />
           </figure>
 
-          <div className="poster__rows reveal" style={{ transitionDelay: "0.32s" }}>
-            <div>
-              <span className="k">NAME —</span> Prapti
-            </div>
-            <div>
-              <span className="k">AGE —</span> newly fifteen (15)
-            </div>
-            <div>
-              <span className="k">LAST SEEN —</span> in her room watching jake edits
-            </div>
-            <div>
-              <span className="k">IDENTIFYING MARKS —</span> waist missing, ethereal face card, stares at hot men and women, JAKE, COFFEE
-            </div>
-          </div>
-          <p className="poster__reward reveal" style={{ transitionDelay: "0.4s" }}>
+          <PosterDetails />
+          <p className="poster__reward reveal" style={{ transitionDelay: "2.7s" }}>
             REWARD IF FOUND: <b>we don&rsquo;t put a price on women #FEMINISM</b>
           </p>
 
