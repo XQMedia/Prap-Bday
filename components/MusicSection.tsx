@@ -84,14 +84,16 @@ export default function MusicSection() {
       </div>
 
       <div className="music__head">
-        <p className="music__evi">Evidence №1 · recovered audio</p>
-        <h2 className="music__title">
+        <p className="music__evi reveal">Evidence №1 · recovered audio</p>
+        <h2 className="music__title reveal" style={{ transitionDelay: "0.1s" }}>
           <span className="glitch" data-text="DARK">DARK</span> <b>BLOOD</b>
         </h2>
-        <p className="music__cap">found playing on loop at the scene.</p>
+        <p className="music__cap reveal" style={{ transitionDelay: "0.2s" }}>
+          found playing on loop at the scene.
+        </p>
       </div>
 
-      <div className="mplayer">
+      <div className="mplayer reveal" style={{ transitionDelay: "0.32s" }}>
         <div className="mplayer__now">
           <div className={`mplayer__art ${playing ? "spin" : ""}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -137,6 +139,18 @@ export default function MusicSection() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* crossed crime-scene tape across the lower part of the section */}
+      <div className="crimetape crimetape--1" aria-hidden="true">
+        <span>
+          crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;
+        </span>
+      </div>
+      <div className="crimetape crimetape--2" aria-hidden="true">
+        <span>
+          do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;do not cross&nbsp;·&nbsp;crime scene&nbsp;·&nbsp;
+        </span>
       </div>
 
       <p className="music__cue">the trail continues ↓</p>

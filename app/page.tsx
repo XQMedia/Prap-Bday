@@ -17,19 +17,31 @@ export default function Home() {
   useEffect(() => {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // scroll reveals
+    // scroll reveals — toggle so they float up EVERY time they enter view
     const io = new IntersectionObserver(
-      (es) => es.forEach((e) => e.isIntersecting && e.target.classList.add("is-in")),
-      { threshold: 0.25 }
+      (es) => es.forEach((e) => e.target.classList.toggle("is-in", e.isIntersecting)),
+      { threshold: 0.15 }
     );
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-    // FOUND stamp slams in
+    // FOUND stamp slams in every time it enters
     const foundIO = new IntersectionObserver(
-      (es) => es.forEach((e) => e.isIntersecting && foundRef.current?.classList.add("pop")),
+      (es) => es.forEach((e) => e.target.classList.toggle("pop", e.isIntersecting)),
       { threshold: 0.6 }
     );
     if (foundRef.current) foundIO.observe(foundRef.current);
+
+    // replay the poster's float-up when the intro is dismissed
+    const onIntroOpen = () => {
+      requestAnimationFrame(() => {
+        document.querySelectorAll<HTMLElement>(".wall .reveal").forEach((el) => {
+          el.classList.remove("is-in");
+          void el.offsetWidth; // force reflow so the transition restarts
+          el.classList.add("is-in");
+        });
+      });
+    };
+    window.addEventListener("intro-open", onIntroOpen);
 
     // confetti + sparkles when the birthday enters
     const sky = skyRef.current;
@@ -79,6 +91,7 @@ export default function Home() {
       io.disconnect();
       foundIO.disconnect();
       bdayIO.disconnect();
+      window.removeEventListener("intro-open", onIntroOpen);
     };
   }, []);
 
@@ -92,16 +105,18 @@ export default function Home() {
         <div className="starfield" aria-hidden="true" />
         <div className="spot" aria-hidden="true" />
 
-        <article className="poster reveal is-in">
+        <article className="poster">
           <span className="poster__tape poster__tape--l" />
           <span className="poster__tape poster__tape--r" />
-          <p className="poster__kick">⚠ have you seen this girl ⚠</p>
-          <h1 className="poster__title">
+          <p className="poster__kick reveal">⚠ have you seen this girl ⚠</p>
+          <h1 className="poster__title reveal" style={{ transitionDelay: "0.08s" }}>
             MISS<span>ING</span>
           </h1>
-          <p className="poster__sub">the prettiest girl in the world</p>
+          <p className="poster__sub reveal" style={{ transitionDelay: "0.16s" }}>
+            the prettiest girl in the world
+          </p>
 
-          <figure className="poster__photo">
+          <figure className="poster__photo reveal" style={{ transitionDelay: "0.24s" }}>
             <span className="poster__stamp">15</span>
             {/* drop a real prapti.jpg into /public/assets */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -116,7 +131,7 @@ export default function Home() {
             />
           </figure>
 
-          <div className="poster__rows">
+          <div className="poster__rows reveal" style={{ transitionDelay: "0.32s" }}>
             <div>
               <span className="k">NAME —</span> Prapti
             </div>
@@ -130,11 +145,11 @@ export default function Home() {
               <span className="k">IDENTIFYING MARKS —</span> waist missing, ethereal face card, stares at hot men and women, JAKE, COFFEE
             </div>
           </div>
-          <p className="poster__reward">
+          <p className="poster__reward reveal" style={{ transitionDelay: "0.4s" }}>
             REWARD IF FOUND: <b>we don&rsquo;t put a price on women #FEMINISM</b>
           </p>
 
-          <div className="tabs" aria-hidden="true">
+          <div className="tabs reveal" style={{ transitionDelay: "0.48s" }} aria-hidden="true">
             {["♡", "생일", "축하", "해", "♡", "birthday", "♡"].map((t, i) => (
               <span className="tabs__tab" key={i}>
                 {t}

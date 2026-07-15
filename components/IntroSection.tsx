@@ -22,6 +22,7 @@ export default function IntroSection() {
     setClosing(true);
     document.body.style.overflow = "";
     window.scrollTo(0, 0);
+    window.dispatchEvent(new Event("intro-open")); // let the poster float up
     setTimeout(() => setHidden(true), 900);
   };
 
