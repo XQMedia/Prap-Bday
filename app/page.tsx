@@ -156,7 +156,7 @@ export default function Home() {
       <section className="search" aria-label="Searching">
         <div className="starfield" aria-hidden="true" />
         <div className="search__inner">
-          <p className="search__label">
+          <p className="search__label reveal">
             searching every café, every playlist, every poem
             <span className="search__dots">
               <i>.</i>
@@ -169,7 +169,9 @@ export default function Home() {
               FOUND
             </span>
           </p>
-          <p className="search__cap">she was never lost — just growing up.</p>
+          <p className="search__cap reveal" style={{ transitionDelay: "0.2s" }}>
+            she was never lost — just growing up.
+          </p>
         </div>
       </section>
 
@@ -178,10 +180,14 @@ export default function Home() {
         <div className="bday__sky" ref={skyRef} aria-hidden="true" />
         <div className="bday__inner">
           <h2 className="bday__ko reveal">생일 축하해</h2>
-          <p className="bday__en reveal">happy birthday</p>
-          <p className="bday__name reveal">Prapti</p>
+          <p className="bday__en reveal" style={{ transitionDelay: "0.12s" }}>
+            happy birthday
+          </p>
+          <p className="bday__name reveal" style={{ transitionDelay: "0.24s" }}>
+            Prapti
+          </p>
 
-          <div className="cake reveal">
+          <div className="cake reveal" style={{ transitionDelay: "0.38s" }}>
             <span className="cake__glow" />
             <span className="cake__flame" />
             <span className="cake__candle" />
@@ -224,7 +230,7 @@ export default function Home() {
             <p>congrats on being 15 twin.</p>
             <p>enjoy life</p>
           </div>
-          <h2 className="end__wish reveal">
+          <h2 className="end__wish reveal" style={{ transitionDelay: "0.25s" }}>
             Happy Birthday, Prapti <span className="hb">♡</span>
           </h2>
         </div>
