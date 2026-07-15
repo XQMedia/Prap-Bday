@@ -175,6 +175,18 @@ img{display:block;max-width:100%}
   border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#fff6c9,#ffb347 55%,#ff7a59 90%);
   box-shadow:0 0 22px 6px rgba(255,179,71,.65);transform-origin:bottom;animation:flick 1.3s ease-in-out infinite}
 @keyframes flick{0%,100%{transform:translateX(-50%) scaleY(1) rotate(-2deg)}50%{transform:translateX(-50%) scaleY(1.12) rotate(2deg)}}
+/* candle blown out */
+.cake__smoke{position:absolute;bottom:206px;left:50%;transform:translate(-50%,0);width:6px;height:6px;border-radius:50%;
+  background:rgba(220,220,220,.55);filter:blur(2px);opacity:0;pointer-events:none}
+.cake.out .cake__flame{opacity:0;animation:none;transition:opacity .35s}
+.cake.out .cake__glow{opacity:0;transition:opacity 1.2s}
+.cake.out .cake__smoke{animation:smoke 2.4s ease-out forwards}
+@keyframes smoke{0%{opacity:.7;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-72px) scale(3.4)}}
+/* auto make-a-wish countdown */
+.bday__wish{min-height:1.4em;margin-top:.4rem;font-family:var(--display);font-weight:400;color:var(--cherry);
+  font-size:clamp(2rem,7vw,3.6rem);line-height:1;opacity:0;text-shadow:0 6px 30px rgba(224,104,143,.35)}
+.bday__wish.show{animation:wishpop .5s var(--ease) forwards}
+@keyframes wishpop{0%{opacity:0;transform:scale(.6)}55%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:scale(1)}}
 
 /* confetti / sparkles */
 .confetti{position:absolute;top:-6vh;border-radius:2px;pointer-events:none;will-change:transform,opacity;z-index:2}
@@ -469,6 +481,72 @@ img{display:block;max-width:100%}
 .book.flip .book__cover{transform:rotateY(-158deg)}
 .book__hint{position:absolute;bottom:-2.6rem;left:0;right:0;text-align:center;font-family:var(--type);font-size:.6rem;
   letter-spacing:.2em;text-transform:uppercase;color:#c7a878;opacity:.8}
+
+/* =============================================================
+   CAMERA — "Evidence 02" · the undeveloped film (disposable cam)
+   ============================================================= */
+.cam{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;padding:14vh 5vw;gap:2.4rem;isolation:isolate;
+  background:radial-gradient(70% 60% at 50% 30%,#2a2230,transparent 65%),linear-gradient(180deg,#12101a,#1c1622 55%,#0e0b14)}
+.cam__grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cam__head{position:relative;z-index:3;text-align:center}
+.cam__evi{font-family:var(--type);letter-spacing:.3em;text-transform:uppercase;color:#e0a3c4;font-size:.72rem}
+.cam__title{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(2.2rem,7vw,4rem);color:#f0e6ee}
+.cam__cap{font-family:var(--serif);font-style:italic;color:#b79ab0;font-size:clamp(1rem,2.4vw,1.2rem);margin-top:.2rem}
+
+/* camera body */
+.cambody{position:relative;z-index:3;width:min(440px,92vw);border-radius:22px;padding:18px 18px 22px;
+  background:linear-gradient(180deg,#f6e9ef,#e9d3e0);border:1px solid rgba(120,60,90,.25);
+  box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 2px 3px rgba(255,255,255,.7),inset 0 -8px 16px rgba(150,90,120,.3)}
+.cambody__top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 4px}
+.cambody__brand{font-family:var(--poster);font-size:.9rem;letter-spacing:.05em;color:#c0426f}
+.cambody__brand b{color:#7c2a4e}
+.cambody__flash{width:34px;height:20px;border-radius:4px;background:linear-gradient(180deg,#fffef5,#e9e2c8);
+  box-shadow:inset 0 0 0 2px rgba(120,60,90,.2),0 0 0 rgba(255,255,200,0);transition:box-shadow .1s}
+.cambody.flashing .cambody__flash{box-shadow:inset 0 0 0 2px rgba(120,60,90,.2),0 0 26px 10px rgba(255,250,210,.95)}
+.cambody__count{font-family:var(--font-mono),monospace;font-size:.7rem;color:#8a4d6a;background:#2a1420;color:#ff6b9a;
+  padding:.25em .6em;border-radius:3px;letter-spacing:.1em}
+
+/* the screen / viewfinder where shots appear */
+.camscreen{position:relative;width:100%;aspect-ratio:4/5;border-radius:12px;overflow:hidden;cursor:pointer;
+  background:#0c0910;border:3px solid #1a0f16;box-shadow:inset 0 0 40px rgba(0,0,0,.8)}
+.camscreen img,.camscreen video{width:100%;height:100%;object-fit:cover;display:block}
+.camscreen__empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;
+  color:#caa;font-family:var(--type);text-align:center;padding:1rem}
+.camscreen__cross{width:44px;height:44px;position:relative;opacity:.5}
+.camscreen__cross::before,.camscreen__cross::after{content:"";position:absolute;background:#e0a3c4}
+.camscreen__cross::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%)}
+.camscreen__cross::after{top:50%;left:0;right:0;height:1px;transform:translateY(-50%)}
+.camscreen__hint{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:#e0a3c4;animation:bob 2s ease-in-out infinite}
+.camscreen__corners::before,.camscreen__corners::after,
+.camscreen__c2::before,.camscreen__c2::after{content:"";position:absolute;width:16px;height:16px;border:2px solid rgba(255,255,255,.5);z-index:3;pointer-events:none}
+.camscreen__corners::before{top:10px;left:10px;border-right:none;border-bottom:none}
+.camscreen__corners::after{top:10px;right:10px;border-left:none;border-bottom:none}
+.camscreen__c2::before{bottom:10px;left:10px;border-right:none;border-top:none}
+.camscreen__c2::after{bottom:10px;right:10px;border-left:none;border-top:none}
+.camscreen__rec{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:4;display:flex;align-items:center;gap:.4em;
+  font-family:var(--font-mono),monospace;font-size:.68rem;color:#fff;background:rgba(0,0,0,.4);padding:.2em .6em;border-radius:20px}
+.camscreen__rec i{width:8px;height:8px;border-radius:50%;background:#ff2d4f;animation:recblink 1s steps(1) infinite}
+@keyframes recblink{50%{opacity:.2}}
+.camscreen__flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:5;pointer-events:none}
+.camscreen__flash.go{animation:camflash .5s ease-out}
+@keyframes camflash{0%{opacity:0}8%{opacity:1}100%{opacity:0}}
+.camscreen__date{position:absolute;bottom:10px;right:12px;z-index:4;font-family:var(--font-mono),monospace;font-size:.7rem;
+  color:#ffb85c;text-shadow:0 0 6px rgba(255,120,40,.8);letter-spacing:.05em}
+
+.cambody__bottom{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding:0 4px}
+.cambody__lens{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#3a3340,#0c0910 70%);
+  box-shadow:0 0 0 3px rgba(120,60,90,.25),inset 0 0 4px rgba(255,255,255,.2)}
+.cambody__shutter{width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;
+  background:radial-gradient(circle at 40% 35%,#ff6b9a,#c0426f);color:#fff;font-family:var(--type);font-size:.6rem;
+  letter-spacing:.1em;text-transform:uppercase;box-shadow:0 6px 14px rgba(150,40,80,.5),inset 0 2px 3px rgba(255,255,255,.5);
+  transition:transform .1s}
+.cambody__shutter:active{transform:scale(.92)}
+.cambody__wheel{width:34px;height:22px;border-radius:5px;background:repeating-linear-gradient(90deg,#c9a1b4 0 3px,#e9d3e0 3px 6px);
+  box-shadow:inset 0 0 3px rgba(120,60,90,.4)}
+.cam__cue{position:relative;z-index:3;font-family:var(--type);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;
+  color:#b98aa8;animation:bob 2.2s ease-in-out infinite}
 
 /* tulip */
 .tulip{display:block}

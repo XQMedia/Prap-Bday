@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Tulip } from "@/components/Deco";
 import MusicSection from "@/components/MusicSection";
+import CameraSection from "@/components/CameraSection";
 import LettersSection from "@/components/LettersSection";
 
 export default function Home() {
@@ -11,6 +12,9 @@ export default function Home() {
   const skyRef = useRef<HTMLDivElement>(null);
   const foundRef = useRef<HTMLSpanElement>(null);
   const burst = useRef(false);
+  const wishStarted = useRef(false);
+  const [wish, setWish] = useState("");
+  const [candleOut, setCandleOut] = useState(false);
 
   useEffect(() => {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -66,7 +70,31 @@ export default function Home() {
         });
       }
     };
-    const bdayIO = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && spawn()), { threshold: 0.3 });
+    // auto "make a wish · 3 · 2 · 1" then blow the candle out (no scrolling)
+    const runWish = () => {
+      if (wishStarted.current) return;
+      wishStarted.current = true;
+      const seq: [string, number][] = [
+        ["make a wish", 1800],
+        ["3", 1000],
+        ["2", 1000],
+        ["1", 1000],
+      ];
+      let t = 800;
+      seq.forEach(([txt, dur]) => {
+        setTimeout(() => setWish(txt), t);
+        t += dur;
+      });
+      setTimeout(() => {
+        setWish("");
+        setCandleOut(true);
+      }, t);
+    };
+
+    const bdayIO = new IntersectionObserver(
+      (es) => es.forEach((e) => e.isIntersecting && (spawn(), runWish())),
+      { threshold: 0.3 }
+    );
     if (sky?.parentElement) bdayIO.observe(sky.parentElement);
 
     return () => {
@@ -142,6 +170,9 @@ export default function Home() {
       {/* 02 · MUSIC (evidence: recovered audio) ------------- */}
       <MusicSection />
 
+      {/* 02b · CAMERA (evidence: the film roll) ------------- */}
+      <CameraSection />
+
       {/* 03 · SEARCHING → FOUND ----------------------------- */}
       <section className="search" aria-label="Searching">
         <div className="starfield" aria-hidden="true" />
@@ -171,8 +202,9 @@ export default function Home() {
           <p className="bday__en reveal">happy birthday</p>
           <p className="bday__name reveal">Prapti</p>
 
-          <div className="cake reveal">
+          <div className={`cake reveal ${candleOut ? "out" : ""}`}>
             <span className="cake__glow" />
+            <span className="cake__smoke" />
             <span className="cake__flame" />
             <span className="cake__candle" />
             <span className="cake__tier cake__top" />
@@ -181,7 +213,9 @@ export default function Home() {
             <span className="cake__plate" />
           </div>
 
-          <p className="bday__note reveal">make a wish, prettiest girl in the world.</p>
+          <p key={wish} className={`bday__wish ${wish ? "show" : ""}`} aria-live="polite">
+            {wish}
+          </p>
         </div>
       </section>
 

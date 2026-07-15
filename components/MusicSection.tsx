@@ -141,7 +141,7 @@ export default function MusicSection() {
 
       <p className="music__cue">the trail continues ↓</p>
 
-      <audio ref={audioRef} src={TRACKS[0].src} preload="metadata" />
+      <audio ref={audioRef} id="scene-audio" src={TRACKS[0].src} preload="metadata" />
     </section>
   );
 }
