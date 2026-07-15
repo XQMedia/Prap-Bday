@@ -233,9 +233,17 @@ img{display:block;max-width:100%}
   border:1px solid rgba(200,66,111,.2)}
 .env__flap{position:absolute;top:0;left:0;right:0;height:56%;background:linear-gradient(180deg,#ffd0e0,var(--pink-400));
   clip-path:polygon(0 0,100% 0,50% 100%);border-radius:5px 5px 0 0}
-.env__seal{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;z-index:2;
-  display:grid;place-items:center;background:radial-gradient(circle at 40% 35%,#ff5d7d,var(--cherry));color:#fff;
-  font-family:var(--hand);font-size:1.1rem;box-shadow:0 3px 8px rgba(200,30,60,.5)}
+.env__seal{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;z-index:2;
+  display:grid;place-items:center;
+  border-radius:46% 54% 52% 48% / 53% 47% 53% 47%;
+  background:radial-gradient(circle at 36% 30%,#d64b62,#b31e3f 52%,#7c1228 100%);
+  box-shadow:0 4px 9px rgba(90,10,30,.5),inset 0 2px 4px rgba(255,190,200,.4),inset 0 -4px 7px rgba(50,0,12,.55);
+  color:#791126;font-family:var(--display);font-weight:600;font-size:1.5rem;line-height:1;
+  text-shadow:0 1px 0 rgba(255,195,205,.45),0 -1px 1px rgba(45,0,10,.5)}
+.env__seal::before{content:"";position:absolute;inset:-5px;z-index:-1;border-radius:inherit;
+  background:radial-gradient(circle,rgba(140,20,40,.5),transparent 68%);filter:blur(3px)}
+.env__seal::after{content:"";position:absolute;inset:5px;border-radius:inherit;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(50,0,12,.25)}
 .env__tag{position:absolute;bottom:14%;left:0;right:0;text-align:center;font-family:var(--type);font-size:.6rem;
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
 .env.read{opacity:.6}

@@ -115,7 +115,7 @@ export default function LettersSection() {
       <p className="letters__hint reveal">open a letter — then type who you think wrote it</p>
 
       <div className="letters__grid reveal">
-        {LETTERS.map((_letter, i) => (
+        {LETTERS.map((letter, i) => (
           <button
             className={`env ${read.has(i) ? "read" : ""}`}
             key={i}
@@ -124,7 +124,7 @@ export default function LettersSection() {
           >
             <span className="env__body" />
             <span className="env__flap" />
-            <span className="env__seal" />
+            <span className="env__seal">{read.has(i) ? letter.name.charAt(0) : "?"}</span>
             <span className="env__tag">sealed · {String(i + 1).padStart(2, "0")}</span>
           </button>
         ))}
