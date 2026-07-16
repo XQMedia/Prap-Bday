@@ -12,6 +12,7 @@ export default function Home() {
   const [photo, setPhoto] = useState("/assets/prapti.jpg");
   const toPlaceholder = () => setPhoto((s) => (s.endsWith(".svg") ? s : "/assets/friend-fallback.svg"));
   const skyRef = useRef<HTMLDivElement>(null);
+  const balloonsRef = useRef<HTMLDivElement>(null);
   const foundRef = useRef<HTMLSpanElement>(null);
   const burst = useRef(false);
   const [cakeMsg, setCakeMsg] = useState(false);
@@ -81,14 +82,15 @@ export default function Home() {
           easing: "ease-in-out",
         });
       }
-      // balloons floating up
+      // balloons floating up (own layer — above the text, below the cake)
+      const balloonBox = balloonsRef.current || sky;
       for (let i = 0; i < 9; i++) {
         const el = document.createElement("i");
         el.className = "balloon";
         el.style.cssText = `left:${4 + i * 11 + Math.random() * 4}%;background:radial-gradient(circle at 34% 28%,#fff,${
           colors[i % colors.length]
         })`;
-        sky.appendChild(el);
+        balloonBox.appendChild(el);
         el.animate(
           [
             { transform: "translateY(120vh) rotate(-4deg)" },
@@ -198,6 +200,7 @@ export default function Home() {
       {/* 03 · BIRTHDAY -------------------------------------- */}
       <section className="bday" aria-label="Happy birthday">
         <div className="bday__sky" ref={skyRef} aria-hidden="true" />
+        <div className="bday__balloons" ref={balloonsRef} aria-hidden="true" />
         <div className="bday__inner">
           <h2 className="bday__ko reveal">생일 축하해</h2>
           <p className="bday__en reveal" style={{ transitionDelay: "0.12s" }}>
